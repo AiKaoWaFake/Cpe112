@@ -14,15 +14,49 @@ typedef struct {
     Node* prereqList;
 } Course;
 
-int findCourseIndex()
+int findCourseIndex(char name[]){
+    for (int i = 0; i < courseCount; i++) {
+        if (strcmp(courses[i].course, name) == 0) 
+            return i;
+    }
+    return -1;
+}
 
-int addPrereq()
+void addPrereq(char course[], char prereq[], char minGrade){
+    int i = findCourseIndex(course);
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    strcpy(newNode->course, prereq);
+    newNode->minGrade = minGrade;
+    newNode->next = courses[i].prereqList;
+    courses[i].prereqList = newNode;
+}
 
-int findPrerequisites()
+void findPrerequisites(int index, int visited[]){
+    visited[index] = 1;
+    Node* temp = courses[index].prereqList;
+    while (temp != NULL){
+        int idx = findCourseIndex(temp->course);
+        if (!visited[idx]){
+            if (met)
+                printf("- %s (MIN GRADE: %c) %s\n", temp->course, temp->minGrade, "✅");
+            else
+                printf("- %s (MIN GRADE: %c) %s\n", temp->course, temp->minGrade, "❌");
+            findPrerequisites(idx, visited);
+        }
+        temp = temp->next;
+    }
+}
 
-void displayCourses()
+void displayCourses() {
+    printf("\nAvailable Courses:\n");
+    for (int i = 0; i < courseCount; i++){
+        printf("- %s\n", courses[i].course);
+    }
+}
 
-void something about data???
+void loadSampledata(){
+    
+}
 
 int main(){
     present choices
