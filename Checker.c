@@ -55,6 +55,25 @@ int checkProfileMet(char prereqCourse[], char minGrade){
     return 0;
 }
 
+void addToProfile(char courseName[], char grade){
+    if (findCourseIndex(courseName) == -1){
+        printf("Course '%s' not found in system.\n", courseName);
+        return;
+    }
+
+    for (int i = 0; i < profileCount; i++){
+        if (strcmp(profile[i].course, courseName) == 0){
+            profile[i].grade = grade;
+            printf("Updated %s with grade %c in your profile.\n", courseName, grade);
+            return;
+        }
+    }
+    strcpy(profile[profileCount].course, courseName);
+    profile[profileCount].grade = grade;
+    profileCount++;
+    printf("Added %s (Grade: %c) to your profile.\n", courseName, grade);
+}
+
 void findPrerequisites(int index, int visited[]){
     visited[index] = 1;
     Node* temp = courses[index].prereqList;
