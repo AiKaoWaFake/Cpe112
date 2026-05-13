@@ -14,6 +14,11 @@ typedef struct {
     Node* prereqList;
 } Course;
 
+typedef struct {
+    char course[50];
+    char grade;
+} EnrolledCourse;
+
 int findCourseIndex(char name[]){
     for (int i = 0; i < courseCount; i++) {
         if (strcmp(courses[i].course, name) == 0) 
