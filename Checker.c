@@ -46,6 +46,15 @@ void addPrereq(char course[], char prereq[], char minGrade){
     courses[i].prereqList = newNode;
 }
 
+int checkProfileMet(char prereqCourse[], char minGrade){
+    for(int i =0; i < profileCount; i++){
+        if(strcmp(profile[i].course, prereqCourse) == 0){
+            return profile[i].grade <= minGrade;
+        }
+    }
+    return 0;
+}
+
 void findPrerequisites(int index, int visited[]){
     visited[index] = 1;
     Node* temp = courses[index].prereqList;
