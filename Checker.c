@@ -98,15 +98,47 @@ void displayCourses() {
 }
 
 void loadSampleData(){
+    //term1
     addCourse("Math10101");
     addCourse("Math10102");
-    addCourse("Programming");
-    addCourse("DataStructures");
-    addCourse("Algorithms");
+    addCourse("CPE100");
+    addCourse("CPE101");
+    addCourse("CPE111");
+    addCourse("CPE123");
+    addCourse("LNG221");
 
-    addPrereq("Programming", "Math101", 'C');
-    addPrereq("DataStructures", "Programming", 'B');
-    addPrereq("Algorithms", "DataStructures", 'C');
+    //term 2
+    addCourse("CPE112");
+    addCourse("CPE121");
+    addCourse("GEN121");
+    addCourse("LNG222");
+    addCourse("MTH10201");
+    addCourse("MTH10202");
+    addCourse("MTH10203");
+    addCourse("PHY10301");
+    addCourse("PHY10302");
+    addCourse("PHY10303");
+    
+    //term1
+    addPrereq("Programming", "Math101", '');
+    addPrereq("DataStructures", "Programming", '');
+    addPrereq("Algorithms", "DataStructures", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+
+    //term2
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
+    addPrereq("", "", '');
 }
 
 int main(){
@@ -117,7 +149,7 @@ int main(){
 }
 
 /*
-module 1
+term 1
 CPE100 = COMPUTER PROGRAMMING FOR ENGINEERS
 CPE101 = ENGINEERING EXPLORATION
 CPE111 = DISCRETE MATHEMATICS FOR COMPUTER ENGINEERS
@@ -126,7 +158,7 @@ LNG221 = ACADEMIC ENGLISH IN INTERNATIONAL CONTEXTS
 MTH10101 = LIMIT, CONTINUITY AND DERIVATIVES
 MTH10102 = INTEGRALS
 
-module 2
+term 2
 CPE112 = PROGRAMMING WITH DATA STRUCTURES
 CPE121 = BASIC CIRCUITS AND ELECTRONICS
 GEN121 = LEARNING AND PROBLEM SOLVING SKILLS
