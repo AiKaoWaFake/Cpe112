@@ -54,8 +54,15 @@ void displayCourses() {
     }
 }
 
-void loadSampledata(){
-    
+void loadSampleData(){
+    addCourse("Math101");
+    addCourse("Programming");
+    addCourse("DataStructures");
+    addCourse("Algorithms");
+
+    addPrereq("Programming", "Math101", 'C');
+    addPrereq("DataStructures", "Programming", 'B');
+    addPrereq("Algorithms", "DataStructures", 'C');
 }
 
 int main(){
