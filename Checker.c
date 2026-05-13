@@ -98,7 +98,8 @@ void displayCourses() {
 }
 
 void loadSampleData(){
-    addCourse("Math101");
+    addCourse("Math10101");
+    addCourse("Math10102");
     addCourse("Programming");
     addCourse("DataStructures");
     addCourse("Algorithms");
