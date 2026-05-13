@@ -22,6 +22,9 @@ typedef struct {
 Course courses[MAX];
 int courseCount = 0;
 
+EnrolledCourse profile[MAX];
+int profileCount = 0;
+
 int findCourseIndex(char name[]){
     for (int i = 0; i < courseCount; i++) {
         if (strcmp(courses[i].course, name) == 0) 
@@ -80,6 +83,7 @@ void findPrerequisites(int index, int visited[]){
     while (temp != NULL){
         int idx = findCourseIndex(temp->course);
         if (!visited[idx]){
+            int met = checkProfileMet(temp->course, temp->minGrade);
             if (met)
                 printf("- %s (MIN GRADE: %c) %s\n", temp->course, temp->minGrade, "✅");
             else
