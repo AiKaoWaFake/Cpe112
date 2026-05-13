@@ -19,12 +19,22 @@ typedef struct {
     char grade;
 } EnrolledCourse;
 
+Course courses[MAX];
+int courseCount = 0;
+
 int findCourseIndex(char name[]){
     for (int i = 0; i < courseCount; i++) {
         if (strcmp(courses[i].course, name) == 0) 
             return i;
     }
     return -1;
+}
+
+void addCourse(char name[]){
+    if (findCourseIndex(name) != -1) return;
+    strcpy(courses[courseCount].course, name);
+    courses[courseCount].prereqList = NULL;
+    courseCount++;
 }
 
 void addPrereq(char course[], char prereq[], char minGrade){
