@@ -140,12 +140,12 @@ void loadSampleData(){
 
 
     //term2
-    addPrereq("CPE112", "CPE100", '');
-    addPrereq("LNG222", "LNG221", '');
-    addPrereq("MTH10202", "MTH10201", '');
-    addPrereq("MTH10203", "MTH10202", '');
-    addPrereq("PHY10302", "PHY10301", '');
-    addPrereq("PHY10303", "PHY10302", '');
+    addPrereq("CPE112", "CPE100", 'C');
+    addPrereq("LNG222", "LNG221", 'D');
+    addPrereq("MTH10202", "MTH10201", 'D');
+    addPrereq("MTH10203", "MTH10202", 'D');
+    addPrereq("PHY10302", "PHY10301", 'D');
+    addPrereq("PHY10303", "PHY10302", 'D');
 }
 
 void profileMenu(){
