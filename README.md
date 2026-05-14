@@ -85,5 +85,6 @@ Prerequisites for CPE112:
 * Circular prerequisite detection
 * Better graph visualization
 
+---
 
 Commit Hash: b70460d
