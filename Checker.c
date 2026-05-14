@@ -50,7 +50,7 @@ void addPrereq(char course[], char prereq[], char minGrade){
 }
 
 int checkProfileMet(char prereqCourse[], char minGrade){
-    for(int i =0; i < profileCount; i++){
+    for(int i = 0; i < profileCount; i++){
         if(strcmp(profile[i].course, prereqCourse) == 0){
             return profile[i].grade <= minGrade;
         }
@@ -63,7 +63,6 @@ void addToProfile(char courseName[], char grade){
         printf("Course '%s' not found in system.\n", courseName);
         return;
     }
-
     for (int i = 0; i < profileCount; i++){
         if (strcmp(profile[i].course, courseName) == 0){
             profile[i].grade = grade;
@@ -75,6 +74,21 @@ void addToProfile(char courseName[], char grade){
     profile[profileCount].grade = grade;
     profileCount++;
     printf("Added %s (Grade: %c) to your profile.\n", courseName, grade);
+}
+
+// remove a course from profile by shifting remaining entries left
+void removeFromProfile(char courseName[]){
+    for (int i = 0; i < profileCount; i++){
+        if (strcmp(profile[i].course, courseName) == 0){
+            for (int j = i; j < profileCount - 1; j++){
+                profile[j] = profile[j + 1];
+            }
+            profileCount--;
+            printf("Removed '%s' from your profile.\n", courseName);
+            return;
+        }
+    }
+    printf("Course '%s' not found in your profile.\n", courseName);
 }
 
 void displayProfile(){
@@ -134,10 +148,9 @@ void loadSampleData(){
     addCourse("PHY10301");
     addCourse("PHY10302");
     addCourse("PHY10303");
-    
+
     //term1
     addPrereq("MTH10102", "MTH10101", 'D');
-
 
     //term2
     addPrereq("MTH10201", "MTH10102", 'D');
@@ -155,7 +168,8 @@ void profileMenu(){
         printf("\n--- Profile Menu ---\n");
         printf("1. View profile\n");
         printf("2. Add/Update a course grade\n");
-        printf("3. Back\n");
+        printf("3. Remove a course\n");
+        printf("4. Back\n");
         printf("Choice: ");
 
         int choice;
@@ -181,7 +195,17 @@ void profileMenu(){
                 }
                 break;
             }
-            case 3:
+            case 3: {
+                char courseName[50];
+                displayProfile();
+                if (profileCount > 0){
+                    printf("Enter course name to remove: ");
+                    scanf("%s", courseName);
+                    removeFromProfile(courseName);
+                }
+                break;
+            }
+            case 4:
                 running = 0;
                 break;
             default:
@@ -234,35 +258,3 @@ int main(){
     }
     return 0;
 }
-
-/*
-term 1
-CPE100 = COMPUTER PROGRAMMING FOR ENGINEERS
-CPE101 = ENGINEERING EXPLORATION
-CPE111 = DISCRETE MATHEMATICS FOR COMPUTER ENGINEERS
-CPE123 = USER EXPERIENCE/USER INTERFACE
-LNG221 = ACADEMIC ENGLISH IN INTERNATIONAL CONTEXTS
-MTH10101 = LIMIT, CONTINUITY AND DERIVATIVES
-MTH10102 = INTEGRALS
-
-term 2
-CPE112 = PROGRAMMING WITH DATA STRUCTURES
-CPE121 = BASIC CIRCUITS AND ELECTRONICS
-GEN121 = LEARNING AND PROBLEM SOLVING SKILLS
-LNG222 = ACADEMIC LISTENING AND SPEAKING IN INTERNATIONAL CONTEXTS
-MTH10201 = MATHEMATICAL INDUCTION, SEQUENCES AND SERIES
-MTH10202 = VECTORS, LINES AND PLANES IN A 3D-SPACE AND VECTOR FUNCTIONS
-MTH10203 = MULTIPLE INTEGRALS
-PHY10301 = FORCE AND MOTION
-PHY10302 = OSCILLATIONS AND WAVES
-PHY10303 = THERMAL PHYSICS
-*/
-
-/*
-cpe112 >= c
-cpe100 >= c
-PHY10301 > f
-PHY10301 > f
-PHY10301 > f
-*/
-
