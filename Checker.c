@@ -140,6 +140,7 @@ void loadSampleData(){
 
 
     //term2
+    addPrereq("MTH10201", "MTH10102", 'D');
     addPrereq("CPE112", "CPE100", 'C');
     addPrereq("LNG222", "LNG221", 'D');
     addPrereq("MTH10202", "MTH10201", 'D');
