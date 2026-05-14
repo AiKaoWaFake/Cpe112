@@ -6,4 +6,7 @@ The Course Prerequisite Checker System is a C programming project that helps stu
 How to run:
 1. Run the program
 2. Select your choice
-3. Follow the instruction given
+3. Follow the instruction (Typing in courses name and grade if you are adding them)
+
+commit hash: 
+b70460d
