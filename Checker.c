@@ -115,8 +115,8 @@ void displayCourses() {
 
 void loadSampleData(){
     //term1
-    addCourse("Math10101");
-    addCourse("Math10102");
+    addCourse("MTH10101");
+    addCourse("MTH10102");
     addCourse("CPE100");
     addCourse("CPE101");
     addCourse("CPE111");
@@ -136,25 +136,16 @@ void loadSampleData(){
     addCourse("PHY10303");
     
     //term1
-    addPrereq("Programming", "Math101", '');
-    addPrereq("DataStructures", "Programming", '');
-    addPrereq("Algorithms", "DataStructures", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
+    addPrereq("MTH10102", "MTH10101", 'D');
+
 
     //term2
-    addPrereq("", "", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
-    addPrereq("", "", '');
+    addPrereq("CPE112", "CPE100", '');
+    addPrereq("LNG222", "LNG221", '');
+    addPrereq("MTH10202", "MTH10201", '');
+    addPrereq("MTH10203", "MTH10202", '');
+    addPrereq("PHY10302", "PHY10301", '');
+    addPrereq("PHY10303", "PHY10302", '');
 }
 
 void profileMenu(){
