@@ -199,10 +199,48 @@ void profileMenu(){
 }
 
 int main(){
-    present choices
-    input choice
-    program run
-    you are eligible!!! 
+    char input[50];
+    loadSampleData();
+    printf("\n==============");
+    while (1){
+        printf("\n\n[MAIN MENU]\n");
+        printf("1. Check prerequisites\n");
+        printf("2. Manage profile\n");
+        printf("3. Exit\n");
+        printf("Choice: ");
+
+        int choice;
+        scanf("%d", &choice);
+
+        if (choice == 3) break;
+
+        if (choice == 2){
+            profileMenu();
+            continue;
+        }
+
+        if (choice == 1){
+            displayCourses();
+            printf("\nEnter course to check: ");
+            scanf("%s", input);
+
+            int index = findCourseIndex(input);
+            if (index == -1){
+                printf("Course not found!\n");
+                continue;
+            }
+
+            int visited[MAX] = {0};
+            printf("\nPrerequisites for %s:\n", input);
+            if (courses[index].prereqList == NULL){
+                printf("No prerequisites\n");
+            } else {
+                findPrerequisites(index, visited);
+            }
+            printf("===============================\n");
+        }
+    }
+    return 0;
 }
 
 /*
