@@ -77,6 +77,18 @@ void addToProfile(char courseName[], char grade){
     printf("Added %s (Grade: %c) to your profile.\n", courseName, grade);
 }
 
+void displayProfile(){
+    printf("\n--- Your Profile ---\n");
+    if (profileCount == 0){
+        printf("No courses added yet.\n");
+        return;
+    }
+    for (int i = 0; i < profileCount; i++){
+        printf("- %s: %c\n", profile[i].course, profile[i].grade);
+    }
+    printf("--------------------\n");
+}
+
 void findPrerequisites(int index, int visited[]){
     visited[index] = 1;
     Node* temp = courses[index].prereqList;
@@ -143,6 +155,47 @@ void loadSampleData(){
     addPrereq("", "", '');
     addPrereq("", "", '');
     addPrereq("", "", '');
+}
+
+void profileMenu(){
+    int running = 1;
+    while (running){
+        printf("\n--- Profile Menu ---\n");
+        printf("1. View profile\n");
+        printf("2. Add/Update a course grade\n");
+        printf("3. Back\n");
+        printf("Choice: ");
+
+        int choice;
+        scanf("%d", &choice);
+
+        switch(choice){
+            case 1:
+                displayProfile();
+                break;
+            case 2: {
+                char courseName[50];
+                char gradeStr[5];
+                displayCourses();
+                printf("Enter course name: ");
+                scanf("%s", courseName);
+                printf("Enter grade (A/B/C/D/F): ");
+                scanf("%s", gradeStr);
+                char grade = gradeStr[0];
+                if (grade!='A' && grade!='B' && grade!='C' && grade!='D' && grade!='F'){
+                    printf("Invalid grade. Use A, B, C, D, or F.\n");
+                } else {
+                    addToProfile(courseName, grade);
+                }
+                break;
+            }
+            case 3:
+                running = 0;
+                break;
+            default:
+                printf("Invalid choice.\n");
+        }
+    }
 }
 
 int main(){
